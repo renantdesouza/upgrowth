@@ -65,40 +65,58 @@ UpGrowth.util.array.crescent = function(array, iterator) {
     }
 };
 
-UpGrowth.util.array.decrescent = function(array, ) {
+UpGrowth.util.array.decrescent = function(array, order) {
     UpGrowth.util.array.crescent(array, order).inverse();
 };
 
+// Devolve um array com a concatenação dos arrays
+// que estão dentro da matrix
+//
+// ex: 
+//    var result = UpGrowth.util.array.concat([[1,2],[3,4]])
+// result é [1,2,3,4];
 UpGrowth.util.array.concat = function(matrix) {
     return _.union(matrix)
 };
 
+// Devolve o obejeto que possui a condição dentro do array
+//
+// ex:
+//    var result = UpGrowth.util.array.where(
+//        [{name: 'bla', idade: 22},
+//         {name: 'ble', idade: 22}],
+//         {name: 'ble'}
+//    );
+// result é {name: 'ble': idade: 22};
 UpGrowth.util.array.where = function(array, property) {
     return _.findWhere(array, property);
 };
 
+// Devolve um array sem objetos duplicados.
 UpGrowth.util.array.uniq = function(array) {
     return _.uniq(array);
 };
 
-/*
-ex:
-    var result = _.reject([1, 2, 3, 4, 5, 6], function(num) { 
-        return num % 2 == 0; 
-    });
-    return 1,3,5.
-*/
+// Devolve um array filtrado, removendo os objetos
+// que obedecem a condição.
+//
+// ex:
+//    var result = UpGrowth([1, 2, 3, 4, 5, 6], function(num) { 
+//        return num % 2 == 0; 
+//    });
+//    return 1,3,5.
 UpGrowth.util.array.reject = function(array, fn) {
     return _.reject(array, fn);
 };
 
-/*
-ex:
-    var result = _.reject([1, 2, 3, 4, 5, 6], function(num) { 
-        return num % 2 == 0; 
-    });
-    return 2,4,6.
-*/
+// Devolve um array filtrado, mantendo os objetos
+// que obedecem a condição.
+//
+// ex:
+//    var result = UpGrowth([1, 2, 3, 4, 5, 6], function(num) { 
+//        return num % 2 == 0; 
+//    });
+//    return 2,4,6.
 UpGrowth.util.array.filter = function(array, fn) {
     return _.filter(array, fn);
 };
