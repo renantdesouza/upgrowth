@@ -8,6 +8,26 @@ var UpGrowth = UpGrowth || {};
 
 UpGrowth.util = {};
 
+// Monta um message format para strings
+// ex:
+//    'campo {0} é obrigatório'.format(var).
+// Retorna string formatada.
+(function() {
+    if (!String.prototype.format) {
+        String.prototype.format = function() {
+            var args = arguments;
+            return this.replace(/{(\d+)}/g, function(match, number) {
+                // -match é a palavra que vai ser trocada.
+                // -number é o indíce do argumento que vai ser colocado no lugar do match.
+                // -args é a lista de parâmetros passados.
+                // -caso não seja passado paramêtros args[number] é 'undefined'
+                // e será retornado a própria palavra.
+                return typeof args[number] != 'undefined' ? args[number] : match;
+            });
+        };
+    }
+})();
+
 // Cria 'herança' de um objeto.
 UpGrowth.util.extend = function(obj1, obj2) {
     return $.extend({}, obj1, obj2)
@@ -20,25 +40,18 @@ UpGrowth.util.handlebars = {};
     
     // Registra os métodos para realizar operações dentro dos ifs do handlebars
     Handlebars.registerHelper('operation', function(v1, operator, v2, options) {
+        var fn = options.fn;
+        var inverse = options.inverse;
         switch (operator) {
-            case '==':
-                return (v1 == v2)  ? options.fn(this) : options.inverse(this);
-            case '===':
-                return (v1 === v2) ? options.fn(this) : options.inverse(this);
-            case '<':
-                return (v1 < v2)   ? options.fn(this) : options.inverse(this);
-            case '<=':
-                return (v1 <= v2)  ? options.fn(this) : options.inverse(this);
-            case '>':
-                return (v1 > v2)   ? options.fn(this) : options.inverse(this);
-            case '>=':
-                return (v1 >= v2)  ? options.fn(this) : options.inverse(this);
-            case '&&':
-                return (v1 && v2)  ? options.fn(this) : options.inverse(this);
-            case '||':
-                return (v1 || v2)  ? options.fn(this) : options.inverse(this);
-            default:
-                return options.inverse(this);
+            case '==' : return (v1 == v2)  ? fn(this) : inverse(this);
+            case '===': return (v1 === v2) ? fn(this) : inverse(this);
+            case '<'  : return (v1 < v2)   ? fn(this) : inverse(this);
+            case '<=' : return (v1 <= v2)  ? fn(this) : inverse(this);
+            case '>'  : return (v1 > v2)   ? fn(this) : inverse(this);
+            case '>=' : return (v1 >= v2)  ? fn(this) : inverse(this);
+            case '&&' : return (v1 && v2)  ? fn(this) : inverse(this);
+            case '||' : return (v1 || v2)  ? fn(this) : inverse(this);
+            default   : return inverse(this);
         }
     });
     
@@ -122,5 +135,5 @@ UpGrowth.util.array.filter = function(array, fn) {
 };
 
 UpGrowth.util.array.remove = function(array1, array2) {
-    _.without(array1, array2);
+    return _.without(array1, array2);
 };
