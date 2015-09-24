@@ -1,0 +1,1 @@
+//colocar aqui page, template e coisas vinculadas a páginas
