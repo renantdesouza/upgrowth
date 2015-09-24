@@ -22,6 +22,8 @@ UpGrowth.http = function(obj) {
         return ajax(obj);
     }
     // Se não retorna um objeto com métodos pré-definidos.
+    // Após execução do método prosegue com a promise 
+    // retornada pelo $.ajax.
     return {
         get: function(url, data) {
             return ajax({method: 'GET', url: url, data: data});
