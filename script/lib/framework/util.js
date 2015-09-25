@@ -65,15 +65,16 @@ UpGrowth.util.array = {};
 // orderna de forma crescente, utiliza a ordenação via iterador
 // ou seja o atributo dos objetos é o que define qual ordem
 // eles devem seguir.
-UpGrowth.util.array.sort = function(array, order, iterator) {
-    if(!order)  {
+//
+// array é obrigatório, iterator e order não são obrigatórios
+UpGrowth.util.array.sort = function(array, iterator, order) {
+    iterator = (!iterator) ? function(val) { return val; } : iterator;
+    if(order)  {
         if(order == 'decrescent') {
             return UpGrowth.util.array.decrescent(array, iterator);
-        } else {
-            return UpGrowth.util.array.crescent(array, iterator);
         }
     }
-    return array;
+    return UpGrowth.util.array.crescent(array, iterator);
 };
 
 UpGrowth.util.array.crescent = function(array, iterator) {
