@@ -59,11 +59,19 @@ UpGrowth.util.handlebars = {};
 
 UpGrowth.util.array = {};
 
-UpGrowth.util.array.sort = function(array, order) {
-    if(!order || order == 'crescent') {
-        UpGrowth.util.array.crescent(array);
-    } else if(order == 'decrescent') {
-        UpGrowth.util.array.decrescent(array);
+// Ordena o array
+//
+// Caso não seja passado o tipo de ordenação
+// orderna de forma crescente, utiliza a ordenação via iterador
+// ou seja o atributo dos objetos é o que define qual ordem
+// eles devem seguir.
+UpGrowth.util.array.sort = function(array, order, iterator) {
+    if(!order)  {
+        if(order == 'decrescent') {
+            return UpGrowth.util.array.decrescent(array, iterator);
+        } else {
+            return UpGrowth.util.array.crescent(array, iterator);
+        }
     }
     return array;
 };
