@@ -149,9 +149,13 @@ UpGrowth.util.array.remove = function(array1, array2) {
 
 UpGrowth.util.array.copy = function(array, init, end) {
     var newArray = [];
-    for(var key in array) {
-        if(key <= end && key >= init) {
-            newArray.push(array[key]);
+    if(array && init > 0 && end < array.length) {
+         for(var key in array) {
+            if(key <= end && key >= init) {
+                newArray.push(array[key]);
+            }
         }
+        return newArray;
     }
+    return [];
 };

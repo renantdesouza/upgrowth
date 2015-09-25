@@ -32,10 +32,10 @@ UpGrowth.http = function(obj) {
             return ajax({method: 'POST', url: url, data: data});
         },
         put: function() {
-            return ajax({method: 'POST', url: url, data: data});
+            return ajax({method: 'PUT', url: url, data: data});
         },
         delete: function() {
-            return ajax({method: 'POST', url: url, data: data});
+            return ajax({method: 'DELETE', url: url, data: data});
         }
     }
 }
