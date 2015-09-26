@@ -4,7 +4,6 @@
  * @author renantdesouza.
  * @since 24/09/2015.
  **/
-
 var UpGrowth = UpGrowth || {};
 
 UpGrowth.paginator = {};
@@ -15,7 +14,7 @@ var _position = 0;
 
 var _hasMorePages = false;
 
-// Inicializa a paginação
+// Inicializa a paginação,
 //
 // Caso a quantidade de items passado
 // for menor que a quantidade de itens

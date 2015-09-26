@@ -17,7 +17,7 @@ UpGrowth.page = {};
         String.prototype.format = function() {
             var args = arguments;
             return this.replace(/{(\d+)}/g, function(match, number) {
-                // -match é a palavra que vai ser trocada.
+                // -match é o conteúdo que vai ser trocado.
                 // -number é o indíce do argumento que vai ser colocado no lugar do match.
                 // -args é a lista de parâmetros passados.
                 // -caso não seja passado paramêtros args[number] é 'undefined'

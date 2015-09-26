@@ -27,7 +27,7 @@ UpGrowth.grid.init = function(items) {
     }
 }; 
 
-UpGrowth.gridx.order = function(param) {
+UpGrowth.grid.order = function(param) {
     order = (order === 'crescent') ? 'crescent' : 'decrescent';
     return UpGrowth.util.array[order](this.items, param);
 };
