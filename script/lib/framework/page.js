@@ -71,7 +71,7 @@ UpGrowth.page.clean = function() {
 
 //TODO verificar internacionalização dentro do 
 UpGrowth.page.submitError = function(empties) {
-    var b = UpGrowth.bundle.
+    var b = UpGrowth.bundle;
     var error = b.getValue('error');
     for(var key in empties) {
         var empty = empties[key];
