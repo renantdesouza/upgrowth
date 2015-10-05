@@ -155,7 +155,6 @@ UpGrowth.util.array.copy = function(array, init, end) {
                 newArray.push(array[key]);
             }
         }
-        return newArray;
     }
-    return [];
+    return newArray;
 };

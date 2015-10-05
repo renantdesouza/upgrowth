@@ -1,6 +1,11 @@
 #TODO
 
 -loading
--grid
--paginacao(testar todas as fun;óes)
--ordenacao na pagina;áo.
+
+-paginacao(testar todas as funções)
+
+# TO TEST
+
+-paginacao(testar todas as funções).
+-grid(testar todas as funções).
+-util(testar métodos que utilizam underscore).
